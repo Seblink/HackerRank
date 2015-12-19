@@ -1,7 +1,0 @@
--- https://www.hackerrank.com/challenges/lambda-calculus-evaluate-the-expression-2
-
--- Result is a Church numeral which represents the function, not the end result.
--- The provided function is the exact definition of a Church numeral.
--- https://en.wikipedia.org/wiki/Church_encoding
-λx.λy.y
-0

@@ -1,8 +1,0 @@
--- https://www.hackerrank.com/challenges/lambda-calculus-reductions-2
-
--- Using normal order reduction
-((λx.((λy.(x y))x))(λz.w))
-(λy.((λz.w) y))(λz.w)
-(λz.w) (λz.w)
-w w
-w

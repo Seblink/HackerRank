@@ -1,7 +1,0 @@
--- https://www.hackerrank.com/challenges/lambda-calculus-reductions-3
-
--- Normal order reduction
-((λx.(x x))(λx.(x x)))
-((λx.(x x))(λx.(x x)))
-...
-CAN'T REDUCE
