@@ -1,0 +1,18 @@
+-- https://www.hackerrank.com/challenges/lambda-calculus-reductions-4
+
+-- Normal order reduction
+(λg.((λf.((λx.(f (x x)))(λx.(f (x x))))) g))
+λg.(λf.(λx. f(x x)) (λx. f(x x))) g            -- simplified parentheses
+λg. g((λx. g(x x)) (λx. g(x x)))
+λg. g( g( (λx. g(x x)) (λx. g(x x)) ) )
+λg. g( g( g( (λx. g(x x)) (λx. g(x x)) ) ) )
+...
+CAN'T REDUCE
+
+-- Applicative order reduction
+(λg.((λf.((λx.(f (x x)))(λx.(f (x x))))) g))
+λg.(λf.(λx. f(x x)) (λx. f(x x))) g             -- simplified parentheses
+λg.(λf. f((λx. f(x x)) (λx. f(x x)))) g
+λg.(λf. f( f((λx. f(x x)) (λx. f(x x))))) g
+...
+CAN'T REDUCE
