@@ -1,0 +1,7 @@
+-- https://www.hackerrank.com/challenges/lambda-calculus-understanding-the-syntax
+
+(λx.x+1)((λy.y+2)3)
+(λx.x+1)(λ3.3+2)
+(λx.x+1)(5)
+(λ5.5+1)
+6
