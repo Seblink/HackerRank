@@ -6,18 +6,18 @@ main :: IO ()
 main = do
     input <- getLine
     let n = read input :: Int
-    mapM_ (putStrLn . makeReadable) $ take n (pascalTriangle)
- 
+    mapM_ (putStrLn . makeReadable) $ take n pascalTriangle
+
 makeReadable :: [Int] -> String
 makeReadable = intercalate " " . map show
 
 pascalTriangle :: [[Int]]
-pascalTriangle = [ row x | x <- [0..] ]
+pascalTriangle = map row [0..]
 
 row :: Int -> [Int]
-row rowNumber = map (calc rowNumber) [0..rowNumber]
-    where calc r e = (factorial r) `div` ((factorial e) * factorial (r-e))
-    
+row rowNumber = map calc [0..rowNumber]
+    where calc e = (factorial rowNumber) `div` ((factorial e) * factorial (rowNumber-e))
+
 factorial :: Int -> Int
 factorial 0 = 1
 factorial n = n * factorial (n-1)
