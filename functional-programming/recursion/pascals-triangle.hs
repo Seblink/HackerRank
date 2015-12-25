@@ -1,22 +1,22 @@
 -- https://www.hackerrank.com/challenges/pascals-triangle
 
--- TODO rework
+import Data.List(intercalate)
+
 main :: IO ()
 main = do
     input <- getLine
     let n = read input :: Int
-    mapM_ putStrLn $ reverse $ pascalTriangle (n-1)
-    
-pascalTriangle :: Int -> [String]
-pascalTriangle 0 = [pascalTriangleRow 0 0]
-pascalTriangle k = pascalTriangleRow k k : pascalTriangle (k-1)
+    mapM_ (putStrLn . makeReadable) $ take n (pascalTriangle)
+ 
+makeReadable :: [Int] -> String
+makeReadable = intercalate " " . map show
 
+pascalTriangle :: [[Int]]
+pascalTriangle = [ row x | x <- [0..] ]
 
-pascalTriangleRow :: Int -> Int -> String
-pascalTriangleRow n r
-    | r <= 0    = (calc n 0)
-    | otherwise = (calc n r) ++ " " ++ pascalTriangleRow n (r-1)
-    where calc n r = show ((factorial n) `div` ((factorial r) * factorial (n-r)))
+row :: Int -> [Int]
+row rowNumber = map (calc rowNumber) [0..rowNumber]
+    where calc r e = (factorial r) `div` ((factorial e) * factorial (r-e))
     
 factorial :: Int -> Int
 factorial 0 = 1
