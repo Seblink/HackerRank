@@ -1,7 +1,5 @@
 -- https://www.hackerrank.com/contests/projecteuler/challenges/euler001/submissions/code/4405341
 
-import Data.List(union)
-
 main :: IO ()
 main = do
     n <- getLine
@@ -12,7 +10,7 @@ calculateAll :: [Int] -> [Int]
 calculateAll = map calculate
 
 calculate :: Int -> Int
-calculate n = sum $ union [3,6..(n-1)] [5,10..(n-1)]
+calculate n = (sum [1..(div (n-1) 3)]) * 3 + (sum [1..(div (n-1) 5)]) * 5 - (sum [1..(div (n-1) 15)]) * 15
 
 showIntList :: [Int] -> IO ()
 showIntList = mapM_ (putStrLn . show)
