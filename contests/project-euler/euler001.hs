@@ -10,7 +10,11 @@ calculateAll :: [Int] -> [Int]
 calculateAll = map calculate
 
 calculate :: Int -> Int
-calculate n = (sum [1..(div (n-1) 3)]) * 3 + (sum [1..(div (n-1) 5)]) * 5 - (sum [1..(div (n-1) 15)]) * 15
+calculate n = (quickSum1toN (div (n-1) 3)) * 3 + (quickSum1toN (div (n-1) 5)) * 5 - (quickSum1toN (div (n-1) 15)) * 15
+
+-- Calculates divergent series from 1 to n
+quickSum1toN :: Int -> Int
+quickSum1toN n = (n*(n+1)) `div` 2
 
 showIntList :: [Int] -> IO ()
 showIntList = mapM_ (putStrLn . show)
