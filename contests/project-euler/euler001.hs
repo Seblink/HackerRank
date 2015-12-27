@@ -1,5 +1,7 @@
 -- https://www.hackerrank.com/contests/projecteuler/challenges/euler001/submissions/code/4405341
 
+import Data.List(union)
+
 main :: IO ()
 main = do
     n <- getLine
@@ -10,10 +12,7 @@ calculateAll :: [Int] -> [Int]
 calculateAll = map calculate
 
 calculate :: Int -> Int
-calculate = sum . filter multiple3or5 . (\i -> [1..(i-1)])
-
-multiple3or5 :: Int -> Bool
-multiple3or5 n = (mod n 3 == 0) || (mod n 5 == 0)
+calculate n = sum $ union [3,6..(n-1)] [5,10..(n-1)]
 
 showIntList :: [Int] -> IO ()
 showIntList = mapM_ (putStrLn . show)
